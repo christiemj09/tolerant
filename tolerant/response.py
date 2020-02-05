@@ -17,15 +17,15 @@ class Response(object):
 
 def response(func):
     """Wrap the evaluation of a function in a Response object."""
-	
-	def decorator(*args, **kwargs):
-		try:
-		    resp = Response(func(*args, **kwargs), func)
-		except Exception as e:
-		    resp = Response(None, func, error=e)
-		return resp
-	
-	return decorator
+    
+    def decorator(*args, **kwargs):
+        try:
+            resp = Response(func(*args, **kwargs), func)
+        except Exception as e:
+            resp = Response(None, func, error=e)
+        return resp
+    
+    return decorator
 
 
 class LazyResponse(object):
@@ -47,8 +47,8 @@ class LazyResponse(object):
 def lazy_response(func):
     """Wrap the evaluation of a function in a LazyResponse object."""
 
-	def decorator(*args, **kwargs):
-		return LazyResponse(func, *args, **kwargs)
-	
-	return decorator
+    def decorator(*args, **kwargs):
+        return LazyResponse(func, *args, **kwargs)
+    
+    return decorator
 
